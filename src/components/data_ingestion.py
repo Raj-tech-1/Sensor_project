@@ -53,7 +53,7 @@ class DataIngestion:
                 db_name = MONGO_DATABASE_NAME
             )
 
-            logging.info(f"saving exported data into feature store file path :{raw_file_path}")
+            logging.info(f"saving the exported data into feature store file path inside the raw file path :{raw_file_path}")
 
             feature_store_file_path = os.path.join(raw_file_path,'wafer_fault.csv')
 
@@ -66,12 +66,12 @@ class DataIngestion:
 
     def initiate_data_ingestion(self) -> Path:
 
-        logging.info("Entered initiated_data_ingestion method of data_integration class")
+        logging.info("Entered your initiated_data_ingestion method of data_integration class")
 
         try:
             feature_store_file_path = self.export_data_into_feature_store_file_path()
 
-            logging.info("got the data from mongodb")
+            logging.info("We got the data from mongodb")
 
             logging.info("exited initiate_data_ingestion methos of data ingestion class")
 
