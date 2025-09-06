@@ -4,133 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stylish Upload Widget</title>
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap" rel="stylesheet"/>
   <style>
-    /* Paste the improved CSS here */
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap');
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body, html {
-      height: 100%;
-      margin: 0;
+      height: 100%; margin: 0;
       font-family: 'Open Sans', Helvetica, sans-serif;
       background: linear-gradient(135deg, #6a0dad 0%, #ff69b4 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
+      display: flex; align-items: center;
+      justify-content: center; color: #333;
     }
-
     .frame {
-      width: 420px;
-      height: 420px;
+      width: 420px; height: 420px;
       border-radius: 10px;
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
       background: linear-gradient(135deg, #7b1fa2, #ff4081);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
       padding: 30px;
     }
-
     .center {
-      width: 320px;
-      height: 280px;
-      background: #fff;
-      border-radius: 12px;
+      width: 320px; height: 280px;
+      background: #fff; border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-      padding: 20px 30px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: space-evenly; padding: 20px 30px;
       transition: transform 0.3s ease;
     }
-
-    .center:hover {
-      transform: translateY(-8px);
-    }
-
+    .center:hover { transform: translateY(-8px); }
     .title {
-      width: 100%;
-      border-bottom: 1.5px solid #ccc;
-      text-align: center;
-      padding-bottom: 12px;
-      margin-bottom: 20px;
+      width: 100%; border-bottom: 1.5px solid #ccc;
+      text-align: center; padding-bottom: 12px; margin-bottom: 20px;
     }
-
-    .title h1 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #5a5a5a;
-      margin: 0;
-    }
-
+    .title h1 { font-size: 22px; font-weight: 700; color: #5a5a5a; margin: 0; }
     .dropzone {
-      width: 120px;
-      height: 90px;
-      border: 2px dashed #bbb;
-      border-radius: 8px;
-      text-align: center;
-      cursor: pointer;
-      position: relative;
-      transition: border-color 0.3s ease, color 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #999;
-      user-select: none;
+      width: 120px; height: 90px; border: 2px dashed #bbb;
+      border-radius: 8px; text-align: center; cursor: pointer;
+      position: relative; transition: border-color 0.3s ease, color 0.3s ease;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      color: #999; user-select: none;
     }
-
-    .dropzone:hover {
-      border-color: #7b1fa2;
-      color: #7b1fa2;
-    }
-
-    .upload-icon {
-      width: 36px;
-      height: 36px;
-      margin-bottom: 10px;
-      fill: currentColor;
-    }
-
+    .dropzone:hover { border-color: #7b1fa2; color: #7b1fa2; }
+    .upload-icon { width: 36px; height: 36px; margin-bottom: 10px; fill: currentColor; }
     .upload-input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
     }
-
     .btn {
-      width: 150px;
-      height: 45px;
-      background-color: #7b1fa2;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 5px 0 #e040fb;
-      cursor: pointer;
+      width: 150px; height: 45px; background-color: #7b1fa2; color: #fff;
+      font-size: 16px; font-weight: 600; border: none; border-radius: 8px;
+      box-shadow: 0 5px 0 #e040fb; cursor: pointer;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .btn:hover {
-      background-color: #5e148c;
-      box-shadow: 0 5px 0 #d500f9;
-    }
+    .btn:hover { background-color: #5e148c; box-shadow: 0 5px 0 #d500f9; }
   </style>
 </head>
 <body>
@@ -139,30 +65,16 @@
       <header class="title" aria-label="Upload section title">
         <h1>Upload your file</h1>
       </header>
-
-      <label for="file-upload" class="dropzone" tabindex="0">
-        <svg
-          class="upload-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            d="M19.35 10.04A7.49 7.49 0 0 0 5.35 9c-2.49 0-4.5 2.01-4.5 4.5 0 2.5 2.01 4.5 4.5 4.5h9.5c2.21 0 4-1.79 4-4 0-1.64-1.03-3.02-2.5-3.96zM13 11v4h-2v-4H8l4-4 4 4h-3z"
-          />
-        </svg>
-        <span>Drag & Drop or Click</span>
-        <input
-          id="file-upload"
-          type="file"
-          class="upload-input"
-          aria-label="File upload input"
-        />
-      </label>
-
-      <button type="button" class="btn" aria-label="Submit uploaded file">
-        Upload
-      </button>
+      <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="dropzone" tabindex="0">
+          <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.35 10.04A7.49 7.49 0 0 0 5.35 9c-2.49 0-4.5 2.01-4.5 4.5 0 2.5 2.01 4.5 4.5 4.5h9.5c2.21 0 4-1.79 4-4 0-1.64-1.03-3.02-2.5-3.96zM13 11v4h-2v-4H8l4-4 4 4h-3z"/>
+          </svg>
+          <span>Drag & Drop or Click</span>
+          <input id="file-upload" type="file" name="file" class="upload-input" aria-label="File upload input" required />
+        </label>
+        <button type="submit" class="btn" aria-label="Submit uploaded file">Upload</button>
+      </form>
     </div>
   </div>
 </body>

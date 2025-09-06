@@ -3,7 +3,8 @@ from typing import List
 
 
 
-HYPEN_E_DOT='-e.'
+HYPEN_E_DOT = "-e ."
+
 
 
 def get_requirements(file_path:str)->List[str]:
@@ -14,13 +15,13 @@ def get_requirements(file_path:str)->List[str]:
     return requirements
     if HYPEN_E_DOT in requirements:
         requirements.remove(HYPEN_E_DOT)
-        return requirements
+    return requirements
 
 setup(
     name = 'Sensor Fault detection',
     version  = '0.0.1',
     author = 'Saket',
     author_mail ='rajsaket8987@gmail.com',
-    install_requires=('requirements.txt'),
+    install_requires=get_requirements('requirements.txt'),
     packages=find_packages(include=['sensor_fault_detection', 'sensor_fault_detection.*', 'test', 'test.*'])
 )

@@ -55,7 +55,7 @@ class DataIngestion:
 
             logging.info(f"saving the exported data into feature store file path inside the raw file path :{raw_file_path}")
 
-            feature_store_file_path = os.path.join(raw_file_path,'wafer_fault.csv')
+            feature_store_file_path = os.path.join(raw_file_path,'SensorFault.csv')
 
             sensor_data.to_csv(feature_store_file_path,index=False)
 
